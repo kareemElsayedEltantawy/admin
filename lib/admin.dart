@@ -1,4 +1,3 @@
-import 'package:admin/src/helper/helper.dart';
 import 'package:admin/src/routes/routes.dart';
 import 'package:admin/src/utility/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 GlobalKey<ScaffoldMessengerState> scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
 
-class StartCycleAdmain extends StatelessWidget {
+class StartCycleAdmain extends StatefulWidget {
   final String token;
   final String userId;
   final String userName;
@@ -25,8 +24,18 @@ class StartCycleAdmain extends StatelessWidget {
   required this.companyId }) : super(key: key);
 
   @override
+  State<StartCycleAdmain> createState() => _StartCycleAdmainState();
+}
+
+class _StartCycleAdmainState extends State<StartCycleAdmain> {
+
+  @override
+  void initState() {
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    Helper.init();
     return ScreenUtilInit(
         designSize: const Size(375, 761),//for ScreenUtilInit ,(375, 761) from xd
         minTextAdapt: true,//for ScreenUtilInit ,true daeman

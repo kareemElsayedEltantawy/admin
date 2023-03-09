@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:admin/src/components/text/custom_text.dart';
 import 'package:admin/src/cubits/generic_cubit/generic_cubit.dart';
 import 'package:admin/src/utility/all_app_words.dart';
@@ -16,6 +18,7 @@ class AddCompanyScreen extends StatelessWidget {
   final AddCompanyViewModel addCompanyViewModel = AddCompanyViewModel();
 
   AddCompanyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +41,11 @@ class AddCompanyScreen extends StatelessWidget {
             key: addCompanyViewModel.formKey,
             child: Column(
               children: [
-                BlocConsumer<GenericCubit<bool>, GenericState<bool>>(
-                  bloc: addCompanyViewModel.getImage,
+                BlocConsumer<GenericCubit<File?>, GenericState<File?>>(
+                  bloc: addCompanyViewModel.getImageCubit,
                   listener: (context, state) {},
                   builder: (context, state) {
-                    return addCompanyViewModel.image == null
+                    return addCompanyViewModel.getImageCubit.state.data == null
                         ? InkWell(
                             onTap: () {
                               addCompanyViewModel.getMyImage();
@@ -76,14 +79,20 @@ class AddCompanyScreen extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Container(
-                            width: 1.sw,
-                            height: 0.23.sh,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
-                              image: DecorationImage(
-                                  image: FileImage(addCompanyViewModel.image!),
-                                  fit: BoxFit.cover),
+                        : GestureDetector(
+                            onTap: () {
+                              addCompanyViewModel.getMyImage();
+                            },
+                            child: Container(
+                              width: 1.sw,
+                              height: 0.23.sh,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.r),
+                                image: DecorationImage(
+                                    image: FileImage(addCompanyViewModel
+                                        .getImageCubit.state.data!),
+                                    fit: BoxFit.cover),
+                              ),
                             ),
                           );
                   },
@@ -104,17 +113,21 @@ class AddCompanyScreen extends StatelessWidget {
                   bloc: addCompanyViewModel.getAddCompany,
                   listener: (context, state) {},
                   builder: (context, state) {
-                    return state.data! ? const CircularProgressIndicator() : CustomButton(
-                      width: 0.7.sw,
-                      text: AppWords.add_company,
-                      onPressed: () {
-                        if (addCompanyViewModel.formKey.currentState!.validate()) {
-                          addCompanyViewModel.addCompany('ce531451-fe41-4768-a824-bbdb020849e7');
+                    return state.data!
+                        ? const CircularProgressIndicator()
+                        : CustomButton(
+                            width: 0.7.sw,
+                            text: AppWords.add_company,
+                            onPressed: () {
+                              if (addCompanyViewModel.formKey.currentState!
+                                  .validate()) {
+                                addCompanyViewModel.addCompany(
+                                    'ce531451-fe41-4768-a824-bbdb020849e7');
 //                          goToScreen(screenNames: ScreenNames.homeScreen);
-                        }
-                      },
-                      color: AppColors.mainColor,
-                    );
+                              }
+                            },
+                            color: AppColors.mainColor,
+                          );
                   },
                 )
               ],
