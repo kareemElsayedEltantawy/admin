@@ -67,15 +67,15 @@ flutter:
     - passets/img/
     - passets/icons/
 
-  fonts:
-    - family: ALMARAI-REGULAR
-      fonts:
-        - asset: passets/fonts/ALMARAI-REGULAR.ttf
-
-    - family: ALMARAI-LIGHT
-      fonts:
-        - asset: passets/fonts/ALMARAI-LIGHT.ttf
-
-    - family: ALMARAI-BOLDd
-      fonts:
-        - asset: passets/fonts/ALMARAI-BOLD.ttf
+#  fonts:
+#    - family: ALMARAI-REGULAR
+#      fonts:
+#        - asset: passets/fonts/ALMARAI-REGULAR.ttf
+#
+#    - family: ALMARAI-LIGHT
+#      fonts:
+#        - asset: passets/fonts/ALMARAI-LIGHT.ttf
+#
+#    - family: ALMARAI-BOLDd
+#      fonts:
+#        - asset: passets/fonts/ALMARAI-BOLD.ttf

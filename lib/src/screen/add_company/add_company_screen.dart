@@ -42,47 +42,50 @@ class AddCompanyScreen extends StatelessWidget {
                   bloc: addCompanyViewModel.getImage,
                   listener: (context, state) {},
                   builder: (context, state) {
-                    return  addCompanyViewModel.image == null ? InkWell(
-                      onTap: () {
-                        addCompanyViewModel.getMyImage();
-                      },
-                      child: Container(
-                        width: 1.sw,
-                        height: 0.23.sh,
-                        alignment: AlignmentDirectional.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          color: AppColors.GreyColor,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(8.sp),
-                              child: SvgPicture.asset(
-                                AppImage.add_photo,package: 'admin',
-                                width: 20.w,
-                                height: 20.h,
+                    return addCompanyViewModel.image == null
+                        ? InkWell(
+                            onTap: () {
+                              addCompanyViewModel.getMyImage();
+                            },
+                            child: Container(
+                              width: 1.sw,
+                              height: 0.23.sh,
+                              alignment: AlignmentDirectional.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.r),
+                                color: AppColors.GreyColor,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(8.sp),
+                                    child: SvgPicture.asset(
+                                      AppImage.add_photo,
+                                      package: 'admin',
+                                      width: 20.w,
+                                      height: 20.h,
+                                    ),
+                                  ),
+                                  CustomText(
+                                      text: AppWords.add_photo,
+                                      color: AppColors.grey,
+                                      fontSize: 14.sp,
+                                      fontFamily: AppFonts.fontMedium)
+                                ],
                               ),
                             ),
-                            CustomText(
-                                text: AppWords.add_photo,
-                                color: AppColors.grey,
-                                fontSize: 14.sp,
-                                fontFamily: AppFonts.fontMedium)
-                          ],
-                        ),
-                      ),
-                    ) : Container(
-                      width: 1.sw,
-                      height: 0.23.sh,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.r),
-                        image: DecorationImage(
-                            image: FileImage(addCompanyViewModel.image!),
-                            fit: BoxFit.cover),
-                      ),
-                    );
+                          )
+                        : Container(
+                            width: 1.sw,
+                            height: 0.23.sh,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.r),
+                              image: DecorationImage(
+                                  image: FileImage(addCompanyViewModel.image!),
+                                  fit: BoxFit.cover),
+                            ),
+                          );
                   },
                 ),
                 SizedBox(
@@ -97,15 +100,22 @@ class AddCompanyScreen extends StatelessWidget {
                 SizedBox(
                   height: 25.h,
                 ),
-                CustomButton(
-                  width: 0.7.sw,
-                  text: AppWords.add_company,
-                  onPressed: () {
-                    if (addCompanyViewModel.formKey.currentState!.validate()) {
-                      goToScreen(screenNames: ScreenNames.homeScreen);
-                    }
+                BlocConsumer<GenericCubit<bool>, GenericState<bool>>(
+                  bloc: addCompanyViewModel.getAddCompany,
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    return state.data! ? const CircularProgressIndicator() : CustomButton(
+                      width: 0.7.sw,
+                      text: AppWords.add_company,
+                      onPressed: () {
+                        if (addCompanyViewModel.formKey.currentState!.validate()) {
+                          addCompanyViewModel.addCompany('ce531451-fe41-4768-a824-bbdb020849e7');
+//                          goToScreen(screenNames: ScreenNames.homeScreen);
+                        }
+                      },
+                      color: AppColors.mainColor,
+                    );
                   },
-                  color: AppColors.mainColor,
                 )
               ],
             ),
