@@ -59,6 +59,18 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: ALMARAI-REGULAR
+      fonts:
+        - asset: assets/fonts/ALMARAI-REGULAR.ttf
+
+    - family: ALMARAI-LIGHT
+      fonts:
+        - asset: assets/fonts/ALMARAI-LIGHT.ttf
+
+    - family: ALMARAI-BOLDd
+      fonts:
+        - asset: assets/fonts/ALMARAI-BOLD.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

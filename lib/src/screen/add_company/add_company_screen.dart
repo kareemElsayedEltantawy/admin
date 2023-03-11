@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:admin/src/components/text/custom_text.dart';
 import 'package:admin/src/cubits/generic_cubit/generic_cubit.dart';
 import 'package:admin/src/utility/all_app_words.dart';
@@ -79,22 +78,17 @@ class AddCompanyScreen extends StatelessWidget {
                               ),
                             ),
                           )
-                        : GestureDetector(
-                            onTap: () {
-                              addCompanyViewModel.getMyImage();
-                            },
-                            child: Container(
-                              width: 1.sw,
-                              height: 0.23.sh,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.r),
-                                image: DecorationImage(
-                                    image: FileImage(addCompanyViewModel
-                                        .getImageCubit.state.data!),
-                                    fit: BoxFit.cover),
-                              ),
+                        : Container(
+                          width: 1.sw,
+                          height: 0.23.sh,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.r),
+                            image: DecorationImage(
+                                image: FileImage(addCompanyViewModel.getImageCubit.state.data!),
+                                fit: BoxFit.cover
                             ),
-                          );
+                          ),
+                        );
                   },
                 ),
                 SizedBox(
@@ -119,11 +113,8 @@ class AddCompanyScreen extends StatelessWidget {
                             width: 0.7.sw,
                             text: AppWords.add_company,
                             onPressed: () {
-                              if (addCompanyViewModel.formKey.currentState!
-                                  .validate()) {
-                                addCompanyViewModel.addCompany(
-                                    'ce531451-fe41-4768-a824-bbdb020849e7');
-//                          goToScreen(screenNames: ScreenNames.homeScreen);
+                              if (addCompanyViewModel.formKey.currentState!.validate()) {
+                                addCompanyViewModel.addCompany('ce531451-fe41-4768-a824-bbdb020849e7');
                               }
                             },
                             color: AppColors.mainColor,

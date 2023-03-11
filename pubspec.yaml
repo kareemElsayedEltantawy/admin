@@ -13,11 +13,11 @@ dependencies:
 
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
+  http: ^0.13.5
   package_info_plus: ^3.0.3
   flutter_screenutil: ^5.5.4
   get: ^4.6.5
   flutter_svg: ^1.1.5
-  http: ^0.13.5
   shared_preferences: ^2.0.8
   fluttertoast: ^8.0.8
   image_picker: ^0.8.4+3

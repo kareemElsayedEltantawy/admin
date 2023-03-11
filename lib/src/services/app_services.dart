@@ -16,7 +16,7 @@ class AppService {
 
     var header = {
       "content-type": 'application/json',
-      "Accept": 'application/json, text/plain, /',
+//      "Accept": 'application/json, text/plain, /',
     };
 
     // if (!checkIfNotLogin(apiUrl.toString())) {
@@ -43,10 +43,10 @@ class AppService {
 
         /// USER UN AUTHORIZE
         if (response.statusCode == 401) {
-          /// DO SOMETHING
+          /// DO SOMETHING (go to login screen)
           return null;
         } else {
-          if(jsonDecode(response.body)["State"] && response.statusCode == 200){
+          if(response.statusCode == 200 && jsonDecode(response.body)["State"]){
             return response.body;
           }else{
             showToast(msg: jsonDecode(response.body)["Message"][0]["Value"], backgroundColor: AppColors.red);

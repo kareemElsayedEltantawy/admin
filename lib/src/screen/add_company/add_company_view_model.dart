@@ -14,12 +14,12 @@ import 'package:image_picker/image_picker.dart';
 
 class AddCompanyViewModel {
 
-  String base64Image = ""; //for convert
   TextEditingController companyController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  GenericCubit<File?> getImageCubit = GenericCubit();
-  GenericCubit<bool> getAddCompany = GenericCubit(data: false);
 
+  GenericCubit<File?> getImageCubit = GenericCubit();
+
+  String base64Image = ""; //for convert
 
   Future<void> getMyImage() async {
     UploadImage uploadImage = UploadImage();
@@ -27,14 +27,17 @@ class AddCompanyViewModel {
     if (fileImage != null) {
       getImageCubit.update(data: fileImage);
       Uint8List bytes = fileImage.readAsBytesSync(); //for convert
-      base64Image = base64Encode(bytes);
+      base64Image = base64Encode(bytes); //for convert
     }
   }
 
-  void addCompany(String adminId) async {
+  GenericCubit<bool> getAddCompany = GenericCubit(data: false);
+
+  Future<void> addCompany(String adminId) async {
     getAddCompany.update(data: true);
 
-    GetAddCompanyInfoModel? getAddCompanyInfoModel = await AdminController.addCompany(adminId: adminId,
+    GetAddCompanyInfoModel? getAddCompanyInfoModel = await AdminController.addCompany(
+        adminId: adminId,
         companyName: companyController.text,
         companyLogo: base64Image);
 
