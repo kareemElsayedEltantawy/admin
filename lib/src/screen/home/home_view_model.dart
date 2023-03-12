@@ -1,17 +1,18 @@
 import 'package:admin/src/controllers/admin/admin_controller.dart';
 import 'package:admin/src/cubits/generic_cubit/generic_cubit.dart';
+import 'package:admin/src/cubits/loading_cubit/loading_cubit.dart';
 import 'package:admin/src/models/company_model.dart';
 
-class HomeViewModel{
+class HomeViewModel {
+  GenericCubit<CompanyModel?> getCompanyDataCubit = GenericCubit();
+  Loading loading = Loading();
 
-  GenericCubit<bool> getHomeCubit = GenericCubit(data: false);
-
-  CompanyModel? companyModel;
-
-  Future<void> getHome(String id)async{
-    getHomeCubit.update(data: true);
-    companyModel = await AdminController.getHome(id);
-    getHomeCubit.update(data: false);
+  Future<void> initData(String id) async {
+    loading.show;
+    CompanyModel? companyModel = await AdminController.getCompanyData(id);
+    if (companyModel != null) {
+      getCompanyDataCubit.update(data: companyModel);
+    }
+    loading.hide;
   }
-
 }

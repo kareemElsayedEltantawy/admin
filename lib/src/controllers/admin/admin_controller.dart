@@ -21,7 +21,7 @@ class AdminController {
     return result != null ? GetAddCompanyInfoModel.fromJson(jsonDecode(result)) : null;
   }
 
-  static Future<CompanyModel?> getHome(String id)async{
+  static Future<CompanyModel?> getCompanyData(String id)async{
     var result = await AppService.callService(
         actionType: ActionType.get,
         apiName: 'Company/GetCompanyById?id=$id',

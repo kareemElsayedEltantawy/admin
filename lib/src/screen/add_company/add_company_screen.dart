@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:admin/src/components/loader_custom/loader_custom.dart';
 import 'package:admin/src/components/text/custom_text.dart';
 import 'package:admin/src/cubits/generic_cubit/generic_cubit.dart';
 import 'package:admin/src/utility/all_app_words.dart';
@@ -20,112 +21,110 @@ class AddCompanyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: CustomText(
-            text: AppWords.add_company,
-            color: AppColors.black,
-            fontSize: 16.sp,
-            fontFamily: AppFonts.fontBold),
-        leading: IconButton(
-            onPressed: () {
-              goBack();
-            },
-            icon: const Icon(Icons.arrow_back_ios_rounded)),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(12.sp),
-        child: SingleChildScrollView(
-          child: Form(
-            key: addCompanyViewModel.formKey,
-            child: Column(
-              children: [
-                BlocConsumer<GenericCubit<File?>, GenericState<File?>>(
-                  bloc: addCompanyViewModel.getImageCubit,
-                  listener: (context, state) {},
-                  builder: (context, state) {
-                    return addCompanyViewModel.getImageCubit.state.data == null
-                        ? InkWell(
-                            onTap: () {
-                              addCompanyViewModel.getMyImage();
-                            },
-                            child: Container(
-                              width: 1.sw,
-                              height: 0.23.sh,
-                              alignment: AlignmentDirectional.center,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.r),
-                                color: AppColors.GreyColor,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(8.sp),
-                                    child: SvgPicture.asset(
-                                      AppImage.add_photo,
-                                      package: 'admin',
-                                      width: 20.w,
-                                      height: 20.h,
-                                    ),
+    return Stack(
+      children: [
+        Scaffold(
+          appBar: AppBar(
+            title: CustomText(
+                text: AppWords.add_company,
+                color: AppColors.black,
+                fontSize: 16.sp,
+                fontFamily: AppFonts.fontBold),
+            leading: IconButton(
+                onPressed: () {
+                  goBack();
+                },
+                icon: const Icon(Icons.arrow_back_ios_rounded)),
+          ),
+          body: Padding(
+            padding: EdgeInsets.all(12.sp),
+            child: SingleChildScrollView(
+              child: Form(
+                key: addCompanyViewModel.formKey,
+                child: Column(
+                  children: [
+                    BlocConsumer<GenericCubit<File?>, GenericState<File?>>(
+                      bloc: addCompanyViewModel.getImageCubit,
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        return addCompanyViewModel.getImageCubit.state.data == null
+                            ? InkWell(
+                                onTap: () {
+                                  addCompanyViewModel.getMyImage();
+                                },
+                                child: Container(
+                                  width: 1.sw,
+                                  height: 0.23.sh,
+                                  alignment: AlignmentDirectional.center,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    color: AppColors.GreyColor,
                                   ),
-                                  CustomText(
-                                      text: AppWords.add_photo,
-                                      color: AppColors.grey,
-                                      fontSize: 14.sp,
-                                      fontFamily: AppFonts.fontMedium)
-                                ],
-                              ),
-                            ),
-                          )
-                        : Container(
-                          width: 1.sw,
-                          height: 0.23.sh,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.r),
-                            image: DecorationImage(
-                                image: FileImage(addCompanyViewModel.getImageCubit.state.data!),
-                                fit: BoxFit.cover
-                            ),
-                          ),
-                        );
-                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(8.sp),
+                                        child: SvgPicture.asset(
+                                          AppImage.add_photo,
+                                          package: 'admin',
+                                          width: 20.w,
+                                          height: 20.h,
+                                        ),
+                                      ),
+                                      CustomText(
+                                          text: AppWords.add_photo,
+                                          color: AppColors.grey,
+                                          fontSize: 14.sp,
+                                          fontFamily: AppFonts.fontMedium)
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 1.sw,
+                                height: 0.23.sh,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  image: DecorationImage(
+                                      image: FileImage(addCompanyViewModel
+                                          .getImageCubit.state.data!),
+                                      fit: BoxFit.cover),
+                                ),
+                              );
+                      },
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    CustomTextField(
+                        controller: addCompanyViewModel.companyController,
+                        inputType: TextInputType.text,
+                        labelText: '',
+                        hintText: AppWords.company_name,
+                        textFieldVaidType: TextFieldvalidatorType.DisplayText),
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    CustomButton(
+                      width: 0.7.sw,
+                      text: AppWords.add_company,
+                      onPressed: () {
+                        if (addCompanyViewModel.formKey.currentState!.validate()) {
+                          addCompanyViewModel
+                              .addCompany('ce531451-fe41-4768-a824-bbdb020849e7');
+                        }
+                      },
+                      color: AppColors.mainColor,
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                CustomTextField(
-                    controller: addCompanyViewModel.companyController,
-                    inputType: TextInputType.text,
-                    labelText: '',
-                    hintText: AppWords.company_name,
-                    textFieldVaidType: TextFieldvalidatorType.DisplayText),
-                SizedBox(
-                  height: 25.h,
-                ),
-                BlocConsumer<GenericCubit<bool>, GenericState<bool>>(
-                  bloc: addCompanyViewModel.getAddCompany,
-                  listener: (context, state) {},
-                  builder: (context, state) {
-                    return state.data!
-                        ? const CircularProgressIndicator()
-                        : CustomButton(
-                            width: 0.7.sw,
-                            text: AppWords.add_company,
-                            onPressed: () {
-                              if (addCompanyViewModel.formKey.currentState!.validate()) {
-                                addCompanyViewModel.addCompany('ce531451-fe41-4768-a824-bbdb020849e7');
-                              }
-                            },
-                            color: AppColors.mainColor,
-                          );
-                  },
-                )
-              ],
+              ),
             ),
           ),
         ),
-      ),
+        Loader(loading: addCompanyViewModel.loading)
+      ],
     );
   }
 }

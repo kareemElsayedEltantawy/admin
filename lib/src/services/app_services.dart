@@ -50,6 +50,7 @@ class AppService {
             return response.body;
           }else{
             showToast(msg: jsonDecode(response.body)["Message"][0]["Value"], backgroundColor: AppColors.red);
+            return null ;
           }
         }
 

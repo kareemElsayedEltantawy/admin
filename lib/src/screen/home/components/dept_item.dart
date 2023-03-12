@@ -33,7 +33,7 @@ class DeptItem extends StatelessWidget {
                 bottomEnd: Radius.circular(12.r),
               )
           ),
-          child: CustomText(text: 'mobile dev',
+          child: CustomText(text: model.name.toString(),
               textAlign: TextAlign.center,
               maxLines: 1,
               color: AppColors.white, fontSize: 14.sp,
