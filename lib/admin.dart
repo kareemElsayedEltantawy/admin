@@ -30,11 +30,6 @@ class StartCycleAdmain extends StatefulWidget {
 class _StartCycleAdmainState extends State<StartCycleAdmain> {
 
   @override
-  void initState() {
-
-    super.initState();
-  }
-  @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(375, 761),//for ScreenUtilInit ,(375, 761) from xd
@@ -49,7 +44,7 @@ class _StartCycleAdmainState extends State<StartCycleAdmain> {
             theme: appTheme,
             debugShowCheckedModeBanner: false,
             routes: appRoutes(context), //appRoutes() is method in routes.dart file (dont forget to import get: ^4.6.5 and convert MaterialApp to GetMaterialApp)
-            initialRoute:  ScreenNames.addCompanyScreen, //first screen in the app
+            initialRoute: widget.companyId == "00000000-0000-0000-0000-000000000000" ?  ScreenNames.addCompanyScreen : ScreenNames.homeScreen, //first screen in the app
           );
         }
     );
