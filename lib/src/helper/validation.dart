@@ -100,8 +100,8 @@ validation(
     if (value.isEmpty) {
       return 'Must not be empty';
     }
-    if (value.length != 11) {
-      return 'Must be equal 11';
+    if (value.length != 10) {
+      return 'Must be equal 10';
     }
     if (!regExpNumber.hasMatch(value.trim().replaceAll('‎', ''))) {
       return 'Not Correct';

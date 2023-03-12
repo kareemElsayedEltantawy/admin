@@ -4,7 +4,7 @@ import '../../components/text/custom_text.dart';
 import '../../routes/routes.dart';
 import '../../utility/all_app_words.dart';
 import '../../utility/app_theme.dart';
-import '../home/components/employee_item.dart';
+import 'components/employee_item.dart';
 
 class AllEployeesScreen extends StatelessWidget {
   const AllEployeesScreen({super.key});

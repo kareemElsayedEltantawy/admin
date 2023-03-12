@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/text/custom_text.dart';
+import '../../../models/company_model.dart';
 import '../../../utility/all_app_words.dart';
 import '../../../utility/app_theme.dart';
 
 class DeptItem extends StatelessWidget {
-  const DeptItem({super.key});
+  final Department model;
+
+  const DeptItem({super.key,required this.model});
 
   @override
   Widget build(BuildContext context) {
