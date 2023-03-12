@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const StartCycleAdmain(
-    companyId: '',
-    userId: 'ce531451-fe41-4768-a824-bbdb020849e7',
+    companyId: "00000000-0000-0000-0000-000000000000",
+    userId: "6a08348c-0ec3-460b-a76c-32a0c6caed4e",
     userName: "kareem",
-    token: "lnXY_KJB4tl32vhxK7LJX-UXiNRvV36ShA_uw_6B15RvYvx6o2wF_lMJOKKpL1vlu62oWQeJg18ipLOKePGIAxmYUvQlDWE4_h7OGEbnPuWlC271W5NCONDAwBdG0Eiba6In4jeEUlOWvtZ5TYeLGkp4vX2XJt9aflMo85AEgUkeSEpMNYLzhftmGc94fC4wqD1hXWzJw711eaXN9NiK_au49FOIBZtMOjRyxIIfZQS3lDI9NTR96VONyWUgUVsRFrL-LiMEeprvCE0o5l9lW61YPDD0N0jlsZf1VOVJTcpBX_3M5pP0JzFhJfWyD_l8NZ5xh4LxW2OTb7zKLheM4tcF2U8xqnkaTr4m6mRihes",
+    token: "Wca7onKF_61DEfwCjetiyNe3-eYQWzhAW5_WX2-A9hXYOfjsNazEal51LG0k9avJ2vFfWUy3Eqb3AUYBpoteNsPxwJpggrZBRqyM_I5eNeXEhyEcsDefFm0EYltsaq0z4-fFYfpQGUE5tKWmQOyMHr57UgfiIP3kYjscSrt4PKsvF4jcrZoIutFKfiJvmnfpPAA9nmGdZpghjzN6GB1XcGsYrbCTuvlzy_x4e6Dv52gyLXrMbfTs9x82aNU8W6uOW3o5Sw0xKZ-vUk02vJY4fS5JHequtMhd-ZI2TWMvegivPdrDaiojnuGmWheN-dDSKiz2ph2zG4uRgWV7LclDLDtmYvlOWb66RKB1IMs8FO0",
     fontBold: 'ALMARAI-BOLDd',
     fontLight: 'ALMARAI-LIGHT',
     fontMedium: 'ALMARAI-REGULAR',

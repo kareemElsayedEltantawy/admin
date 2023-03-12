@@ -6,7 +6,6 @@ import 'package:admin/src/screen/my_profile/my_profile_screen.dart';
 import 'package:admin/src/screen/profile/employee_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../screen/add_employee/add_employee_screen.dart';
 part 'app_navigator.dart';
 
